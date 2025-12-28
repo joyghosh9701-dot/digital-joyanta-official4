@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Joyanta | Premium Portfolio</title>
     
-    <!-- ফন্ট এবং আইকন -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -13,84 +12,43 @@
         /* === BASE STYLES === */
         :root {
             --primary: #d4af37; /* Gold */
-            --bg: #0a0a0a;
-            --glass: rgba(20, 20, 20, 0.6);
-            --border: rgba(255, 255, 255, 0.1);
+            --bg: #050505;      /* Deep Black */
+            --glass: rgba(255, 255, 255, 0.05);
             --text: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; position: relative; }
-
-        /* === ANIMATION CLASSES (THE MAGIC) === */
-        /* শুরুতে লুকিয়ে থাকবে এবং নিচে থাকবে */
-        .hidden {
-            opacity: 0;
-            transform: translateY(80px); 
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        /* স্ক্রল করলে ভেসে উঠবে */
-        .show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* জুম এফেক্ট */
-        .zoom-hidden { opacity: 0; transform: scale(0.5); transition: all 1.2s ease; }
-        .zoom-show { opacity: 1; transform: scale(1); }
-
-
-        /* === FLOATING BACKGROUND === */
-        .floating-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background: #000; overflow: hidden;
-        }
-        .blob {
-            position: absolute; width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.15), transparent 70%);
-            border-radius: 50%; animation: floatAround 10s infinite alternate;
-        }
-        .blob:nth-child(1) { top: -100px; left: -100px; animation-duration: 15s; }
-        .blob:nth-child(2) { bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(50, 50, 255, 0.1), transparent 70%); animation-duration: 20s; }
-        
-        @keyframes floatAround {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
 
         /* === NAVBAR === */
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 20px 8%; position: fixed; width: 100%; top: 0; z-index: 1000;
-            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            animation: slideDown 1s ease forwards;
+            background: rgba(5, 5, 5, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
-
-        .logo { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: 1px; }
+        .logo { font-size: 22px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
         .logo span { color: var(--primary); }
         .btn-contact {
-            padding: 10px 30px; background: linear-gradient(135deg, #d4af37, #b8860b);
+            padding: 8px 25px; background: linear-gradient(45deg, #d4af37, #b8860b);
             color: #000; border-radius: 50px; font-weight: bold; text-decoration: none; font-size: 14px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); transition: 0.3s;
         }
-        .btn-contact:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); }
 
         /* === HERO SECTION === */
         .hero {
             padding: 150px 20px 80px; text-align: center;
             display: flex; flex-direction: column; align-items: center;
+            opacity: 1; /* সব সময় দেখা যাবে */
         }
         
         .profile-wrapper {
-            position: relative; width: 200px; height: 200px; margin-bottom: 30px;
+            position: relative; width: 180px; height: 180px; margin-bottom: 30px;
             display: flex; justify-content: center; align-items: center;
         }
         .profile-ring {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             border-radius: 50%;
             background: linear-gradient(135deg, #d4af37, transparent, #d4af37);
-            box-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.4);
             animation: spin-glow 6s linear infinite;
         }
         .profile-img {
@@ -116,10 +74,9 @@
         .btn-outline { 
             padding: 14px 40px; border: 1px solid rgba(255,255,255,0.2); color: #fff; 
             border-radius: 12px; font-weight: bold; text-decoration: none; transition: 0.3s;
-            backdrop-filter: blur(5px);
         }
 
-        /* === FLOATING CARDS (Services & Portfolio) === */
+        /* === SECTIONS === */
         .section-title { 
             font-size: 30px; font-weight: bold; margin: 60px 20px 40px; 
             text-align: center; text-transform: uppercase; letter-spacing: 2px;
@@ -132,13 +89,12 @@
 
         .floating-card {
             background: var(--glass);
-            backdrop-filter: blur(15px);
             padding: 35px; border-radius: 20px;
             border: 1px solid var(--border);
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            transition: 0.4s; position: relative; overflow: hidden;
+            transition: 0.3s; margin-bottom: 20px;
         }
-        .floating-card:hover { transform: translateY(-15px) scale(1.02); border-color: var(--primary); }
+        .floating-card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
         .floating-card i { font-size: 40px; color: var(--primary); margin-bottom: 20px; }
         .floating-card h3 { font-size: 22px; margin-bottom: 10px; }
@@ -151,23 +107,21 @@
         .tag { display: inline-block; background: rgba(212, 175, 55, 0.2); color: var(--primary); padding: 5px 12px; border-radius: 50px; font-size: 11px; font-weight: bold; margin-bottom: 10px; }
         .p-link { color: #fff; text-decoration: none; font-weight: bold; border-bottom: 2px solid var(--primary); padding-bottom: 2px; }
 
-        /* Reviews */
+        /* REVIEWS */
         .stars { color: #FFD700; font-size: 18px; margin-bottom: 10px; letter-spacing: 2px; }
-        .client-name { color: #fff; font-weight: bold; }
+        .client-name { color: #fff; font-weight: bold; font-size: 15px; }
         .client-role { color: #888; font-size: 12px; }
 
         /* === CONTACT === */
         .contact-box {
-            background: rgba(15, 15, 15, 0.8); backdrop-filter: blur(20px);
-            padding: 50px; border-radius: 25px; border: 1px solid var(--border);
-            width: 100%; max-width: 700px; margin: 50px auto; text-align: center;
+            background: #111; padding: 50px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+            max-width: 600px; margin: 50px auto; text-align: center;
         }
         .form-input { 
             width: 100%; padding: 16px; background: rgba(255,255,255,0.03); 
             border: 1px solid #333; color: #fff; margin-bottom: 20px; border-radius: 12px; 
-            outline: none; transition: 0.3s; font-size: 15px;
+            outline: none; font-size: 15px;
         }
-        .form-input:focus { border-color: var(--primary); }
         textarea.form-input { height: 140px; resize: none; }
         
         .social-icons { margin-top: 30px; }
@@ -192,8 +146,6 @@
 </head>
 <body>
 
-    <div class="floating-bg"><div class="blob"></div><div class="blob"></div></div>
-
     <nav>
         <div class="logo">Digital <span>Joyanta.</span></div>
         <a href="#contact" class="btn-contact">Hire Me</a>
@@ -201,17 +153,17 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
-        <div class="profile-wrapper zoom-hidden">
+        <div class="profile-wrapper">
             <div class="profile-ring"></div>
             <!-- তোমার HD ছবি -->
             <img src="https://i.ibb.co/60mQxTGJ/IMG-20251228-151821.jpg" class="profile-img" alt="Joyanta Ghosh">
         </div>
         
-        <div class="hero-content hidden">
+        <div class="hero-content">
             <h1>Building <br> <span>Digital Empires</span></h1>
-            <p class="hidden">I help businesses in Dubai & India scale with Premium SaaS Solutions, Hotel Systems, and High-Converting Websites.</p>
+            <p>I help businesses in Dubai & India scale with Premium SaaS Solutions, Hotel Systems, and High-Converting Websites.</p>
 
-            <div class="btn-group hidden">
+            <div class="btn-group">
                 <a href="#portfolio" class="btn-primary">View Work</a>
                 <a href="#contact" class="btn-outline">Contact</a>
             </div>
@@ -219,19 +171,19 @@
     </section>
 
     <!-- SERVICES -->
-    <div class="section-title hidden">What I Do</div>
+    <div class="section-title">What I Do</div>
     <div class="service-grid">
-        <div class="floating-card hidden">
+        <div class="floating-card">
             <i class="fas fa-hotel"></i>
             <h4>Hotel SaaS Systems</h4>
             <p>Booking engine, digital menu, and admin dashboards for luxury hotels.</p>
         </div>
-        <div class="floating-card hidden">
+        <div class="floating-card">
             <i class="fas fa-mobile-alt"></i>
             <h4>Web Apps</h4>
             <p>Custom tools like Visiting Card Makers and Business Calculators.</p>
         </div>
-        <div class="floating-card hidden">
+        <div class="floating-card">
             <i class="fas fa-rocket"></i>
             <h4>Business Growth</h4>
             <p>SEO strategies to rank your business on Google & increase sales.</p>
@@ -239,16 +191,16 @@
     </div>
 
     <!-- PORTFOLIO -->
-    <div class="section-title hidden" id="portfolio">Featured Work</div>
+    <div class="section-title" id="portfolio">Featured Work</div>
     <div class="portfolio-grid">
-        <div class="floating-card hidden">
+        <div class="floating-card">
             <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800" class="project-img">
             <span class="tag">SAAS PRODUCT</span>
             <h3 class="p-title">HotelJoy OS</h3>
             <p class="p-desc">Complete hotel management system with check-in & billing.</p>
             <a href="#" class="p-link">View Live Demo &rarr;</a>
         </div>
-        <div class="floating-card hidden">
+        <div class="floating-card">
             <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?w=800" class="project-img">
             <span class="tag">E-COMMERCE</span>
             <h3 class="p-title">Royal QR Menu</h3>
@@ -258,9 +210,9 @@
     </div>
 
     <!-- REVIEWS -->
-    <div class="section-title hidden">Client Feedback</div>
+    <div class="section-title">Client Feedback</div>
     <div class="reviews">
-        <div class="floating-card hidden">
+        <div class="floating-card">
             <div class="stars">★★★★★</div>
             <p class="review-text">"Joyanta built an amazing QR menu for my restaurant. Sales increased by 20% in just one month!"</p>
             <div>
@@ -268,7 +220,7 @@
                 <span class="client-role">Hotel Owner</span>
             </div>
         </div>
-        <div class="floating-card hidden">
+        <div class="floating-card">
             <div class="stars">★★★★★</div>
             <p class="review-text">"Very professional developer. The HotelJoy system saved us so much paperwork. Highly recommended."</p>
             <div>
@@ -279,9 +231,9 @@
     </div>
 
     <!-- CONTACT FORM -->
-    <section class="section hidden" id="contact">
+    <section class="section" id="contact">
         <div class="contact-box">
-            <h2>Ready to Scale Your Business?</h2>
+            <h2>Ready to Scale?</h2>
             <p style="color:#aaa; margin: 15px 0 30px;">Send me a message for a free consultation.</p>
             
             <form onsubmit="sendEmail(); return false;">
@@ -291,15 +243,12 @@
             </form>
 
             <div class="social-icons">
-                <!-- LINKEDIN FIX -->
                 <a href="https://www.linkedin.com/in/joyanta-ghosh-333bb539a/" target="_blank">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <!-- INSTAGRAM FIX -->
                 <a href="https://www.instagram.com/digitaljoyenta/" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <!-- EMAIL FIX -->
                 <a href="mailto:joyghosh9701@gmail.com">
                     <i class="fas fa-envelope"></i>
                 </a>
@@ -309,22 +258,7 @@
 
     <footer><p>&copy; 2025 Digital Joyanta. All Rights Reserved.</p></footer>
 
-    <!-- ANIMATION LOGIC (Custom Script) -->
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                    if(entry.target.classList.contains('zoom-hidden')){
-                         entry.target.classList.add('zoom-show');
-                    }
-                }
-            });
-        });
-
-        document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
-        document.querySelectorAll('.zoom-hidden').forEach((el) => observer.observe(el));
-
         function sendEmail() {
             let name = document.getElementById("cName").value;
             let msg = document.getElementById("cMsg").value;
